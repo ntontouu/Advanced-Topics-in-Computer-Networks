@@ -1,0 +1,151 @@
+file 58784 1764251674                                           
+version 3
+run Exp1_Base_Production-0-20251127-15:53:22-4500
+attr configname Exp1_Base_Production
+attr datetime 20251127-15:53:22
+attr datetimef 20251127-155322
+attr experiment Exp1_Base_Production
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network omada_10.simulations.PacketQueueTutorialStep
+attr processid 4500
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config image-path ../../inet4.5/images
+config description "Ισορροπημένη κατάσταση"
+config *.producer.productionInterval "uniform(0.1s, 0.3s)"
+config *.queue.packetCapacity 5
+config *.collector.collectionInterval 0.2s
+config network omada_10.simulations.PacketQueueTutorialStep
+config sim-time-limit 20s
+config record-eventlog true
+config **.producer.packetLength 1KiB
+config **.producer.numPackets -1
+
+vector 0 PacketQueueTutorialStep.producer packetLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushed)
+attr title "packet lengths"
+attr unit b
+vector 1 PacketQueueTutorialStep.queue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 2 PacketQueueTutorialStep.queue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 3 PacketQueueTutorialStep.queue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 4 PacketQueueTutorialStep.collector packetLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "packet lengths"
+attr unit b
+vector 5 PacketQueueTutorialStep.collector droppedPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths"
+attr unit b
+vector 6 PacketQueueTutorialStep.queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 7 PacketQueueTutorialStep.queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 8 PacketQueueTutorialStep.producer dataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushed)
+attr title "data rate"
+attr unit bps
+vector 9 PacketQueueTutorialStep.queue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 10 PacketQueueTutorialStep.queue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 11 PacketQueueTutorialStep.collector dataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "data rate"
+attr unit bps
+vector 12 PacketQueueTutorialStep.collector meanBitLifeTimePerPacket:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPulled)))
+attr title "mean bit life time per packet"
+attr unit s
+vector 13 PacketQueueTutorialStep.collector packetJitter:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source jitter(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPulled))))
+attr title "packet jitter"
+attr unit s
+vector 14 PacketQueueTutorialStep.collector packetDelayDifferenceToMean:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source differenceToMean(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPulled))))
+attr title "packet delay difference to mean"
+attr unit s
+vector 15 PacketQueueTutorialStep.collector packetDelayVariation:vector ETV
+attr recordingmode vector
+attr source stddev(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPulled))))
+attr title "packet delay variation"
+attr unit s
+vector 16 PacketQueueTutorialStep.collector droppedDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetDropped)
+attr title "dropped data rate"
+attr unit bps
+0	5117 2594 0 190 0 19.839191871882 97 8192 8192 794624 6509559808
+1	7711 2594 0 190 0 19.839191871882 97 8192 8192 794624 6509559808
+2	10305 3170 0 191 0 19.937739863944 96 0 0.444555824063 11.805917029498 3.0563339608432
+3	13475 2569 0 191 0 19.937739863944 96 8192 8192 786432 6442450944
+4	16044 2569 0 191 0 19.937739863944 96 8192 8192 786432 6442450944
+5	18613 2569 0 191 0 19.937739863944 96 8192 8192 786432 6442450944
+6	21182 3972 0 191 0 19.937739863944 166 0 3 134 214
+7	25154 4298 0 191 0 19.937739863944 166 0 24576 1097728 14361296896
+8	29452 2932 2 192 0.1 20 200 0 81920 7946240 650955980800
+9	32384 2932 2 192 0.1 20 200 0 81920 7946240 650955980800
+10	35316 3130 2 192 0.1 20 200 0 81920 7864320 644245094400
+11	38446 3130 2 192 0.1 20 200 0 81920 7864320 644245094400
+12	41576 3229 2 191 0 19.737739863944 95 0 0.444555824063 11.457231809662 2.9347525783111
+13	44805 3405 2 191 0 19.737739863944 95 -0.09396181372 0.096242040396 0.274470479506 0.21482446513569
+14	48210 3742 2 191 0 19.737739863944 95 -0.359071784313 0.05428408137431 -6.6838538176945 1.5274652308785
+15	51952 3700 2 191 0 19.737739863944 95 0 0.13045441916782 6.4330603931024 0.6064620918188
+16	55652 3130 2 192 0.1 20 200 0 81920 7864320 644245094400
+

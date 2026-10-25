@@ -1,0 +1,151 @@
+file 25858 1764251773                                           
+version 3
+run Exp1_Slow_Production-0-20251127-15:55:46-16584
+attr configname Exp1_Slow_Production
+attr datetime 20251127-15:55:46
+attr datetimef 20251127-155546
+attr experiment Exp1_Slow_Production
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network omada_10.simulations.PacketQueueTutorialStep
+attr processid 16584
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config image-path ../../inet4.5/images
+config description "Ουρά άδεια - Καθόλου Drops"
+config *.producer.productionInterval "uniform(0.5s, 1.0s)"
+config *.queue.packetCapacity 5
+config *.collector.collectionInterval 0.1s
+config network omada_10.simulations.PacketQueueTutorialStep
+config sim-time-limit 20s
+config record-eventlog true
+config **.producer.packetLength 1KiB
+config **.producer.numPackets -1
+
+vector 0 PacketQueueTutorialStep.producer packetLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushed)
+attr title "packet lengths"
+attr unit b
+vector 1 PacketQueueTutorialStep.queue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 2 PacketQueueTutorialStep.queue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 3 PacketQueueTutorialStep.queue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 4 PacketQueueTutorialStep.collector packetLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "packet lengths"
+attr unit b
+vector 5 PacketQueueTutorialStep.collector droppedPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths"
+attr unit b
+vector 6 PacketQueueTutorialStep.queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 7 PacketQueueTutorialStep.queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 8 PacketQueueTutorialStep.producer dataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushed)
+attr title "data rate"
+attr unit bps
+vector 9 PacketQueueTutorialStep.queue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 10 PacketQueueTutorialStep.queue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 11 PacketQueueTutorialStep.collector dataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "data rate"
+attr unit bps
+vector 12 PacketQueueTutorialStep.collector meanBitLifeTimePerPacket:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPulled)))
+attr title "mean bit life time per packet"
+attr unit s
+vector 13 PacketQueueTutorialStep.collector packetJitter:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source jitter(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPulled))))
+attr title "packet jitter"
+attr unit s
+vector 14 PacketQueueTutorialStep.collector packetDelayDifferenceToMean:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source differenceToMean(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPulled))))
+attr title "packet delay difference to mean"
+attr unit s
+vector 15 PacketQueueTutorialStep.collector packetDelayVariation:vector ETV
+attr recordingmode vector
+attr source stddev(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPulled))))
+attr title "packet delay variation"
+attr unit s
+vector 16 PacketQueueTutorialStep.collector droppedDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetDropped)
+attr title "dropped data rate"
+attr unit bps
+0	5118 668 0 50 0 19.796647674987 26 8192 8192 212992 1744830464
+1	5786 668 0 50 0 19.796647674987 26 8192 8192 212992 1744830464
+2	6454 590 0 50 0 19.796647674987 26 0 0 0 0
+3	7044 668 0 50 0 19.796647674987 26 8192 8192 212992 1744830464
+4	7712 668 0 50 0 19.796647674987 26 8192 8192 212992 1744830464
+5	8380 668 0 50 0 19.796647674987 26 8192 8192 212992 1744830464
+6	9048 590 0 50 0 19.796647674987 26 0 0 0 0
+7	9638 590 0 50 0 19.796647674987 26 0 0 0 0
+8	10228 2532 2 52 0.1 20 200 0 81920 2129920 174483046400
+9	12760 2532 2 52 0.1 20 200 0 81920 2129920 174483046400
+10	15292 2732 2 52 0.1 20 200 0 81920 2129920 174483046400
+11	18024 2732 2 52 0.1 20 200 0 81920 2129920 174483046400
+12	20756 592 2 50 0 19.012625393109 25 0 0 0 0
+13	21348 592 2 50 0 19.012625393109 25 0 0 0 0
+14	21940 592 2 50 0 19.012625393109 25 0 0 0 0
+15	22532 592 2 50 0 19.012625393109 25 0 0 0 0
+16	23124 2732 2 52 0.1 20 200 0 81920 2129920 174483046400
+

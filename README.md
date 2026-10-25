@@ -1,19 +1,20 @@
-﻿# Advanced Topics in Computer Networks
+﻿# Network Queue Simulation & Bufferbloat Analysis
 
 [![University](https://img.shields.io/badge/University-University%20of%20Ioannina-blue.svg)](https://www.uoi.gr)
-[![Department](https://img.shields.io/badge/Department-Informatics%20%26%20Telecommunications-lightgrey.svg)](https://www.cs.uoi.gr/)
-[![Course](https://img.shields.io/badge/Course-Advanced%20Topics%20in%20Computer%20Networks-orange.svg)]()
-[![Tools](https://img.shields.io/badge/Tools-Cisco%20Packet%20Tracer%20%7C%20OMNET%2B%2B-blueviolet.svg)]()
+[![Tool](https://img.shields.io/badge/Tool-OMNET%2B%2B%20%7C%20INET-blueviolet.svg)]()
+[![Language](https://img.shields.io/badge/Language-C%2B%2B%20%7C%20NED-orange.svg)]()
 
-A comprehensive collection of network engineering labs and simulations developed for the course **"Advanced Topics in Computer Networks"** (Ειδικά Θέματα Δικτύων) at the Department of Informatics and Telecommunications, University of Ioannina.
+## Overview
+A discrete-event simulation project developed in OMNET++ using the INET framework. The study focuses on evaluating the Enqueueing and Packet Dropping behaviors of the **DropTail** algorithm under an M/M/1/K queuing model.
 
-## 📂 Repository Index (Branches)
+## Theoretical Background
+Modern networks face severe congestion when packet arrival rates exceed link capacities. This simulation analyzes the fundamental trade-off in Active Queue Management (AQM):
+- **Small Queues:** Minimize delay but cause catastrophic packet loss (dropping) during traffic bursts.
+- **Large Queues:** Prevent packet loss but introduce severe queuing delays, leading to the well-known **Bufferbloat** phenomenon.
 
-- **[`assignment-1-lan-design`](https://github.com/ntontouu/Advanced-Topics-in-Computer-Networks/tree/assignment-1-lan-design)**: Campus LAN design, Subnetting, and basic routing.
-- **[`assignment-2-vlans`](https://github.com/ntontouu/Advanced-Topics-in-Computer-Networks/tree/assignment-2-vlans)**: VLAN configuration and Router-on-a-Stick Inter-VLAN routing.
-- **[`assignment-3-dynamic-routing`](https://github.com/ntontouu/Advanced-Topics-in-Computer-Networks/tree/assignment-3-dynamic-routing)**: WAN topologies using RIPv2, OSPF, and BGP.
-- **[`optional-route-redistribution`](https://github.com/ntontouu/Advanced-Topics-in-Computer-Networks/tree/optional-route-redistribution)**: Mutual route redistribution between RIP and OSPF autonomous systems.
-- **[`group-project-omnetpp`](https://github.com/ntontouu/Advanced-Topics-in-Computer-Networks/tree/group-project-omnetpp)**: Network queue simulation (M/M/1/K) studying the DropTail algorithm and Bufferbloat in OMNET++.
+## Simulation Setup
+- **Topology:** Single-Server Queue comprising an `ActivePacketSource` (Generator), a `PacketQueue` (FIFO Buffer), and an `ActivePacketSink` (Consumer).
+- **Workloads:** Stress-tested under High, Base, and Low synthetic traffic loads utilizing uniform distribution intervals.
+- **Metrics Evaluated:** Packet Loss Ratio, Queuing Delay, and Throughput across various queue capacities (packetCapacity limits).
 
----
-**Author:** Maria Alexandra Ntontou (2799)
+*This was developed as a collaborative group project for the Advanced Topics in Computer Networks course.*

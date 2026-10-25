@@ -1,0 +1,137 @@
+file 204582 1764251545                                          
+version 3
+run Exp1_Fast_Production-0-20251127-15:45:41-14188
+attr configname Exp1_Fast_Production
+attr datetime 20251127-15:45:41
+attr datetimef 20251127-154541
+attr experiment Exp1_Fast_Production
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network omada_10.simulations.PacketQueueTutorialStep
+attr processid 14188
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config image-path ../../inet4.5/images
+config description "Ουρά υπερφορτωμένη"
+config *.producer.productionInterval "uniform(0.01s, 0.02s)"
+config *.queue.packetCapacity 5
+config *.collector.collectionInterval 0.5s
+config network omada_10.simulations.PacketQueueTutorialStep
+config sim-time-limit 20s
+config record-eventlog true
+config **.producer.packetLength 1KiB
+config **.producer.numPackets -1
+
+vector 0 PacketQueueTutorialStep.producer packetLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushed)
+attr title "packet lengths"
+attr unit b
+vector 1 PacketQueueTutorialStep.queue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 2 PacketQueueTutorialStep.queue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 3 PacketQueueTutorialStep.queue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 4 PacketQueueTutorialStep.collector packetLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "packet lengths"
+attr unit b
+vector 5 PacketQueueTutorialStep.collector droppedPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths"
+attr unit b
+vector 6 PacketQueueTutorialStep.queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 7 PacketQueueTutorialStep.queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 8 PacketQueueTutorialStep.queue droppedPacketLengthsQueueOverflow:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow"
+attr unit b
+vector 9 PacketQueueTutorialStep.collector meanBitLifeTimePerPacket:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPulled)))
+attr title "mean bit life time per packet"
+attr unit s
+vector 10 PacketQueueTutorialStep.collector packetJitter:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source jitter(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPulled))))
+attr title "packet jitter"
+attr unit s
+vector 11 PacketQueueTutorialStep.collector packetDelayDifferenceToMean:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source differenceToMean(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPulled))))
+attr title "packet delay difference to mean"
+attr unit s
+vector 12 PacketQueueTutorialStep.collector packetDelayVariation:vector ETV
+attr recordingmode vector
+attr source stddev(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPulled))))
+attr title "packet delay variation"
+attr unit s
+vector 13 PacketQueueTutorialStep.producer dataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushed)
+attr title "data rate"
+attr unit bps
+vector 14 PacketQueueTutorialStep.queue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+0	4767 36720 0 1369 0 19.992196062387 1331 8192 8192 10903552 89321897984
+1	41487 36720 0 1369 0 19.992196062387 1331 8192 8192 10903552 89321897984
+2	78207 1034 0 1370 0 20 41 0 2.499001090536 94.507336432851 230.37438154696
+3	79241 642 0 1370 0 20 41 8192 8192 335872 2751463424
+4	79883 642 0 1370 0 20 41 8192 8192 335872 2751463424
+5	80525 642 0 1370 0 20 41 8192 8192 335872 2751463424
+6	81167 33237 0 1370 0 20 1371 0 5 6800 33820
+7	114404 38716 0 1370 0 20 1371 0 40960 55705600 2269621780480
+8	153120 35507 6 1369 0.10161822218 19.992196062387 1286 8192 8192 10534912 86301999104
+9	188627 1011 33 1370 0 19.5 40 0 2.499001090536 92.017351277652 224.17435547385
+10	189638 1173 33 1370 0 19.5 40 -0.012253139874 0.484511864977 2.49585024483 1.1749758881328
+11	190811 1164 33 1370 0 19.5 40 -1.2078817489025 0 -17.699917850957 10.857174923211
+12	191975 1121 33 1370 0 19.5 40 0 1.1650938697128 31.497861655629 27.115883171429
+13	193096 5742 102 1371 1.514829291495 20 186 -44316.604532253 655360 100884783.20904 55518627023462
+14	198838 5742 102 1371 1.514829291495 20 186 -44316.604532253 655360 100884783.20904 55518627023462
+
