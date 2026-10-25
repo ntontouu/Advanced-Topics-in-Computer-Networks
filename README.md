@@ -1,19 +1,12 @@
-﻿# Advanced Topics in Computer Networks
+﻿# Campus LAN Design & Subnetting
 
 [![University](https://img.shields.io/badge/University-University%20of%20Ioannina-blue.svg)](https://www.uoi.gr)
-[![Department](https://img.shields.io/badge/Department-Informatics%20%26%20Telecommunications-lightgrey.svg)](https://www.cs.uoi.gr/)
-[![Course](https://img.shields.io/badge/Course-Advanced%20Topics%20in%20Computer%20Networks-orange.svg)]()
-[![Tools](https://img.shields.io/badge/Tools-Cisco%20Packet%20Tracer%20%7C%20OMNET%2B%2B-blueviolet.svg)]()
+[![Tool](https://img.shields.io/badge/Tool-Cisco%20Packet%20Tracer-blueviolet.svg)]()
 
-A comprehensive collection of network engineering labs and simulations developed for the course **"Advanced Topics in Computer Networks"** (Ειδικά Θέματα Δικτύων) at the Department of Informatics and Telecommunications, University of Ioannina.
+## Overview
+Design and implementation of a hierarchical Campus Local Area Network (LAN) supporting multiple academic departments. The topology utilizes a central Core Switch connected to peripheral Access Switches in a star topology. 
 
-## 📂 Repository Index (Branches)
-
-- **[`assignment-1-lan-design`](https://github.com/ntontouu/Advanced-Topics-in-Computer-Networks/tree/assignment-1-lan-design)**: Campus LAN design, Subnetting, and basic routing.
-- **[`assignment-2-vlans`](https://github.com/ntontouu/Advanced-Topics-in-Computer-Networks/tree/assignment-2-vlans)**: VLAN configuration and Router-on-a-Stick Inter-VLAN routing.
-- **[`assignment-3-dynamic-routing`](https://github.com/ntontouu/Advanced-Topics-in-Computer-Networks/tree/assignment-3-dynamic-routing)**: WAN topologies using RIPv2, OSPF, and BGP.
-- **[`optional-route-redistribution`](https://github.com/ntontouu/Advanced-Topics-in-Computer-Networks/tree/optional-route-redistribution)**: Mutual route redistribution between RIP and OSPF autonomous systems.
-- **[`group-project-omnetpp`](https://github.com/ntontouu/Advanced-Topics-in-Computer-Networks/tree/group-project-omnetpp)**: Network queue simulation (M/M/1/K) studying the DropTail algorithm and Bufferbloat in OMNET++.
-
----
-**Author:** Maria Alexandra Ntontou (2799)
+## Technical Details
+- **Addressing:** Static IP assignment across different subnets utilizing a `255.255.0.0` (/16) mask.
+- **Infrastructure:** FastEthernet (100Mbps) for end-user workstations and GigabitEthernet (1Gbps) uplinks for Web and Mail servers.
+- **Verification:** End-to-end connectivity validated via ICMP (ping).
