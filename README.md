@@ -1,19 +1,14 @@
-﻿# Advanced Topics in Computer Networks
+﻿# Dynamic Routing (RIPv2, OSPF) & BGP
 
 [![University](https://img.shields.io/badge/University-University%20of%20Ioannina-blue.svg)](https://www.uoi.gr)
-[![Department](https://img.shields.io/badge/Department-Informatics%20%26%20Telecommunications-lightgrey.svg)](https://www.cs.uoi.gr/)
-[![Course](https://img.shields.io/badge/Course-Advanced%20Topics%20in%20Computer%20Networks-orange.svg)]()
-[![Tools](https://img.shields.io/badge/Tools-Cisco%20Packet%20Tracer%20%7C%20OMNET%2B%2B-blueviolet.svg)]()
+[![Tool](https://img.shields.io/badge/Tool-Cisco%20Packet%20Tracer-blueviolet.svg)]()
 
-A comprehensive collection of network engineering labs and simulations developed for the course **"Advanced Topics in Computer Networks"** (Ειδικά Θέματα Δικτύων) at the Department of Informatics and Telecommunications, University of Ioannina.
+## Overview
+Building a mini-Internet Wide Area Network (WAN) spanning multiple routers and Autonomous Systems (AS). This project transitions from static route definitions to dynamic, scalable routing protocols.
 
-## 📂 Repository Index (Branches)
-
-- **[`assignment-1-lan-design`](https://github.com/ntontouu/Advanced-Topics-in-Computer-Networks/tree/assignment-1-lan-design)**: Campus LAN design, Subnetting, and basic routing.
-- **[`assignment-2-vlans`](https://github.com/ntontouu/Advanced-Topics-in-Computer-Networks/tree/assignment-2-vlans)**: VLAN configuration and Router-on-a-Stick Inter-VLAN routing.
-- **[`assignment-3-dynamic-routing`](https://github.com/ntontouu/Advanced-Topics-in-Computer-Networks/tree/assignment-3-dynamic-routing)**: WAN topologies using RIPv2, OSPF, and BGP.
-- **[`optional-route-redistribution`](https://github.com/ntontouu/Advanced-Topics-in-Computer-Networks/tree/optional-route-redistribution)**: Mutual route redistribution between RIP and OSPF autonomous systems.
-- **[`group-project-omnetpp`](https://github.com/ntontouu/Advanced-Topics-in-Computer-Networks/tree/group-project-omnetpp)**: Network queue simulation (M/M/1/K) studying the DropTail algorithm and Bufferbloat in OMNET++.
-
----
-**Author:** Maria Alexandra Ntontou (2799)
+## Technical Details
+- **Static Routing:** Initial baseline establishment using explicit `ip route` commands.
+- **Interior Gateway Protocols (IGP):** 
+  - Implementation of **RIPv2** for small-scale dynamic route learning.
+  - Implementation of **OSPF (Single Area 0)** for faster convergence and link-state database building.
+- **Border Gateway Protocol (BGP):** Inter-connecting disparate Autonomous Systems (AS 1, AS 2, AS 3) using eBGP peerings to simulate realistic Internet service provider (ISP) connectivity.
